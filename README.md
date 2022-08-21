@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# 使用 Profiler 调试 React 页面应用
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 关于
 
-## Available Scripts
+该项目为这篇[博客](https://lorem314blog.gtsb.io/blog/%E4%BD%BF%E7%94%A8Profiler%E8%B0%83%E8%AF%95React%E5%BA%94%E7%94%A8/)的对应项目，讲解如何使用 Profiler 调试 React 页面程序，并使用 `React.memo` 和 `React.useCallback` 优化渲染性能。
 
-In the project directory, you can run:
+## 如何使用
 
-### `npm start`
+`unoptimized` 分支为完成了基本项目，没有优化的版本。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+`optimized` 分支为优化后的版本。
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 执行 npm start 打开页面。
+- 点击获取用户按钮，下方会显示 100 个用户。
+- 开启 Profiler。
+- 点击若干个用户的关注按钮，文字会从由关注变为取消关注，说明关注成功。
+- 停止 Profiler 查看渲染结果。
 
-### `npm test`
+## 结果
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+分别在两个分支上打开项目，执行上述过程查看渲染性能结果。
 
-### `npm run build`
+**未优化**的版本的 App 组件平均渲染用时在 `20ms` 左右。
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**优化后**的版本的 App 组件平均渲染用时在 `5ms` 左右。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 目录结构
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```text
+[project-folder]
+├─ node_modules
+├─ public
+├─ src
+│  ├─ components
+│  │  ├─ api.js
+│  │  ├─ FollowButton.jsx
+│  │  ├─ User.jsx
+│  │  └─ UserList.jsx
+│  ├─ App.css
+│  ├─ App.jsx
+│  ├─ App.test.js
+│  ├─ index.css
+│  ├─ index.js
+│  ├─ logo.svg
+│  ├─ reportWebVital.js
+│  └─ setupTests.js
+├─ .gitignore
+├─ package-lock.json
+├─ package.json
+└─ README.md
+```

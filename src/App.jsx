@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import { getRandomUsers } from "./components/api";
 import UserList from "./components/UserList";
@@ -19,11 +19,16 @@ function App() {
     setSearchText(event.target.value);
   };
 
-  const handleClickFollowButton = (clickedId) => () => {
-    followingIds.includes(clickedId)
-      ? setFollowingIds(followingIds.filter((id) => id !== clickedId))
-      : setFollowingIds([...followingIds, clickedId]);
-  };
+  const handleClickFollowButton = useCallback(
+    (clickedId) => () => {
+      setFollowingIds((prevFollowingIds) => {
+        return prevFollowingIds.includes(clickedId)
+          ? prevFollowingIds.filter((id) => id !== clickedId)
+          : [...prevFollowingIds, clickedId];
+      });
+    },
+    []
+  );
 
   return (
     <div className="app">

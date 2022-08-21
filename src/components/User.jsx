@@ -1,9 +1,8 @@
-import React from "react"
+import React from "react";
 
-import FollowButton from "./FollowButton"
+import FollowButton from "./FollowButton";
 
-const User = ({ user, followingIds, handleClickFollowButton }) => {
-  const isFollowing = followingIds.includes(user.login.uuid)
+const User = ({ user, isFollowing, handleClickFollowButton }) => {
   return (
     <li className="user">
       <img
@@ -26,7 +25,7 @@ const User = ({ user, followingIds, handleClickFollowButton }) => {
         />
       </div>
     </li>
-  )
-}
+  );
+};
 
-export default User
+export default React.memo(User);
